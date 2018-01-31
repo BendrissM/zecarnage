@@ -20,13 +20,19 @@
                         <h3>tout vos articles</h3>
                         <table class="table table-striped">
                             <tr>
-                                <th>Title</th>
-                                <th></th>
-                                <th></th>
+                                <th width=30%>Title</th>
+                                <th width=20%></th>
+                                <th width=20%></th>
+                                <th width=20%></th>
                             </tr>
                             @foreach($posts as $post)
                                 <tr>
                                     <td>{{$post->title}}</td>
+                                    <td>
+                                        <a href="/posts/{{$post->id}}" class="btn btn-warning">
+                                            <i class="fa fa-eye"></i> Regarder
+                                        </a>
+                                    </td>
                                     <td>
                                         <a class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                                             <i class="fa fa-edit"></i> Modifier
