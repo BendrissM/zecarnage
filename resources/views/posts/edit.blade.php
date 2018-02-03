@@ -23,7 +23,7 @@
           </div>
           <div class="form-group has-feedback">
               {{Form::label('desc', 'Text')}}
-              {{Form::textarea('desc', $post->body, ['id' => 'editor1', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
+              {{Form::textarea('desc', $post->body, ['id' => 'editor1', 'class' => 'form-control'])}}
               <span class="text-red">
                   <strong id="desc-error"></strong>
               </span>

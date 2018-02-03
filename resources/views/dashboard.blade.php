@@ -43,6 +43,7 @@
                                         <a class="btn btn-danger" data-toggle="modal" data-target="#modal-delete" data-id="{{$post->id}}">
                                             <i class="fa fa-trash"></i> Supprimer
                                         </a> 
+                                        @include('modals.delete_modal')
                                     </td>
                                 </tr>
                             @endforeach
@@ -55,16 +56,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="modal-default" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
+@include('templates.edit')
 @include('modals.create_modal') 
 @endsection
 

@@ -14,6 +14,7 @@
                 <p><small>créé le : {{$post->created_at}} , par {{Auth::user()->name}}</small></p>
             </div>    
         @endforeach
+        {{$posts->links()}}
     @else
     <div class="callout callout-info">
         <h4>Aucun blog trouvé</h4>
