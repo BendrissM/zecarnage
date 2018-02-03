@@ -4,8 +4,8 @@ $('body').on('click','#createButton',function() {
     }
     var createForm = $("#createForm");
     var data = createForm.serialize();
-    $( '#title-error' ).html( "" );
-    $( '#desc-error' ).html( "" );
+    $( '#create-title-error' ).html( "" );
+    $( '#create-desc-error' ).html( "" );
 
     $.ajax({
         type: "POST",
@@ -15,16 +15,17 @@ $('body').on('click','#createButton',function() {
           console.log(data);
           if(data.errors) {
               if(data.errors.title){
-                  $( '#title-error' ).html( data.errors.title[0] );
+                  $( '#create-title-error' ).html( data.errors.title[0] );
               }
               if(data.errors.desc){
-                  $( '#desc-error' ).html( data.errors.desc[0] );
+                  $( '#create-desc-error' ).html( data.errors.desc[0] );
               } 
           }
           if(data.success) {
+            $('#create-success-msg').removeClass('hide');
             setInterval(function(){ 
                 $('#modal-create').modal('hide');
-                $('#success-msg').addClass('hide');location.reload();
+                $('#create-success-msg').addClass('hide');location.reload();
             }, 3000);
             
 

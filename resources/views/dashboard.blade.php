@@ -11,11 +11,11 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
-
                 <div class="panel-body">
                     <a class="btn btn-success pull-right" data-toggle="modal" data-target="#modal-create">
                         <i class="fa fa-plus"></i> Créer
                     </a>
+                    @include('modals.create_modal')
                     @if (count($posts) > 0)
                         <h3>tout vos articles</h3>
                         <table class="table table-striped">
@@ -34,14 +34,15 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                                        
+                                        <a href="/posts/{{$post->id}}/edit" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                                             <i class="fa fa-edit"></i> Modifier
                                         </a>
                                     </td>
                                     <td>
-                                        <a class="btn btn-danger" data-toggle="modal" data-target="#modal-delete">
+                                        <a class="btn btn-danger" data-toggle="modal" data-target="#modal-delete" data-id="{{$post->id}}">
                                             <i class="fa fa-trash"></i> Supprimer
-                                        </a>
+                                        </a> 
                                     </td>
                                 </tr>
                             @endforeach
@@ -54,12 +55,20 @@
         </div>
     </div>
 </div>
-@include('modals.edit_modal')
-@include('modals.create_modal')
-@include('modals.delete_modal')
+<div class="modal fade" id="modal-default" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 @endsection
 
 @section('js')
+    <script src="{{ asset('js/modal_hide.js') }}"></script>
     <script src="{{ asset('js/edit.js') }}"></script>
     <script src="{{ asset('js/create.js') }}"></script>
 @endsection

@@ -7,20 +7,20 @@
             <span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title">Suprimer Blog</h4>
         </div>
+        {!! Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'id' => 'deleteForm']) !!}
         <div class="modal-body">
-            {!! Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'id' => 'deleteForm']) !!}
             {{ csrf_field() }}
-            veux-tu vraiment supprimer ce blog ?
+            veux-tu vraiment supprimer ce blog {{$post->id}} ?
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
             {{Form::hidden('_method', 'DELETE')}}
             {{Form::submit('Supprimer', ['class' => 'btn btn-danger'])}}
         </div>
+        {!! Form::close() !!}
       </div>
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
   </div>
   <!-- /.modal -->
-{!! Form::close() !!}

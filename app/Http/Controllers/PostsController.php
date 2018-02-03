@@ -44,7 +44,7 @@ class PostsController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|unique:posts|max:255',
-            'desc' => 'required|min:50',
+            'desc' => 'required|min:20',
         ]);
 
         if($validator->passes()){
@@ -118,6 +118,6 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect('posts')->with('success', 'Post Supprimé');
+        return redirect('dashboard');
     }
 }
