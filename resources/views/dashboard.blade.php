@@ -15,7 +15,7 @@
                     <a class="btn btn-success pull-right" data-toggle="modal" data-target="#modal-create">
                         <i class="fa fa-plus"></i> Créer
                     </a>
-                    @include('modals.create_modal')
+                    
                     @if (count($posts) > 0)
                         <h3>tout vos articles</h3>
                         <table class="table table-striped">
@@ -65,6 +65,7 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+@include('modals.create_modal') 
 @endsection
 
 @section('js')

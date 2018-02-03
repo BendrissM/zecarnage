@@ -1,8 +1,8 @@
-<div class="modal-header">
+    <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Modifier Post</h4>
-      </div>
+    </div>
       {!! Form::open(['action' => ['PostsController@update', $post->id], 'id' => 'updateForm', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
       <div class="modal-body">
           <div id="success-msg" class="hide">
@@ -23,7 +23,7 @@
           </div>
           <div class="form-group has-feedback">
               {{Form::label('desc', 'Text')}}
-              <textarea name="desc" id="editor1" class="form-control">{{$post->body}}</textarea>
+              {{Form::textarea('desc', $post->body, ['id' => 'editor1', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
               <span class="text-red">
                   <strong id="desc-error"></strong>
               </span>
@@ -35,3 +35,6 @@
           <button type="button" id="editButton" class="btn btn-primary"><i class="fa fa-edit"></i> Modifier</button>
       </div>
       {!! Form::close() !!}
+    <script>
+        CKEDITOR.replace( 'editor1' );
+    </script>
