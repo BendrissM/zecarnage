@@ -6,7 +6,6 @@
 @endsection
 
 @section('content')
-<a href="/posts"><i class="fa fa-arrow-left"></i> <span class="btn btn-default">Précédent</span></a>
 <br><br>
 <p>{!! $post->body !!}</p>
 <p><small class="pull-right">créé le : {{$post->created_at}} par {{$post->user->name}}</small></p>

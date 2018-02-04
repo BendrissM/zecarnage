@@ -12,7 +12,7 @@ class PagesController extends Controller
 
     public function index() {
         $data = array(
-            'title' => 'Bienvenu dans mon Projet',
+            'title' => 'Bienvenue dans mon Projet',
             'page_title' => 'Page d\'Acceuil',
             'description' => ''
         );
