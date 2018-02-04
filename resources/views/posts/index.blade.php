@@ -11,7 +11,7 @@
         @foreach ($posts as $post)
             <div class="well">
                 <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
-                <p><small>créé le : {{$post->created_at}} , par {{Auth::user()->name}}</small></p>
+                <p><small>créé le : {{$post->created_at}} , par {{$post->user->name}}</small></p>
             </div>    
         @endforeach
         {{$posts->links()}}

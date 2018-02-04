@@ -2,7 +2,7 @@
 
 @section('content_header')
     Dashboard
-    <small>Gestion des Blogs</small>
+    <small>Gestion des Articles</small>
 @endsection
 
 @section('content')
