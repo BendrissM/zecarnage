@@ -114,6 +114,13 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function deletePost($id)
+    {
+        $post = Post::find($id);
+        return view('posts.delete')->with('post', $post);
+    }
+
     public function destroy($id)
     {
         $post = Post::find($id);

@@ -1,7 +1,7 @@
-    <div class="modal-header">
+    <div class="modal-header" style="background-color: #3c8dbc;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modifier Post</h4>
+        <h4 class="modal-title" style="color: white;">Modifier un article</h4>
     </div>
       {!! Form::open(['action' => ['PostsController@update', $post->id], 'id' => 'updateForm', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
       <div class="modal-body">
@@ -10,7 +10,7 @@
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">×</span>
                   </button>
-                  <strong>Success!</strong> Post modifié avec succé !
+                  <strong>Succès!</strong> Post modifié avec succès !
               </div>
           </div>
           {{ csrf_field() }} 

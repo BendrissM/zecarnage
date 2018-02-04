@@ -1,10 +1,10 @@
 <div class="modal fade" id="modal-default" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color: #3c8dbc;">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">Modifier Post</h4>
+              <h4 class="modal-title" style="color: white;">Modifier l'article</h4>
             </div>
             {!! Form::open(['action' => ['PostsController@update', $post->id], 'id' => 'updateForm', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             <div class="modal-body">

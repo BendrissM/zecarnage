@@ -10,8 +10,8 @@
 <br><br>
 <p>{!! $post->body !!}</p>
 <p><small class="pull-right">créé le : {{$post->created_at}} par {{Auth::user()->name}}</small></p>
-<hr width=50%>
-<hr>
+<br>
+<hr style="border-top: 1px solid #bbb;">
 <!--<a class="btn btn-primary" href="/posts/{{$post->id}}/edit"><i class="fa fa-edit"></i> Modifier</a>-->
 <a class="btn btn-danger pull-right" data-toggle="modal" data-target="#modal-delete">
     <i class="fa fa-trash"></i> Supprimer

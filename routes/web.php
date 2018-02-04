@@ -15,6 +15,7 @@ Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 
 Route::resource('posts', 'PostsController');
+Route::get('/posts/{post}/delete', 'PostsController@deletePost');
 
 Auth::routes();
 

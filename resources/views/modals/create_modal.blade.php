@@ -1,10 +1,10 @@
 <div class="modal fade" id="modal-create" role="dialog">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color: #00a65a;">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">Créer Blog</h4>
+              <h4 class="modal-title" style="color: white;">Créer un article</h4>
             </div>
             {!! Form::open(['action' => 'PostsController@store', 'id' => 'createForm', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             <div class="modal-body">
@@ -13,7 +13,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
                         </button>
-                        <strong>Success!</strong> Post Créé avec succé !
+                        <strong>Succès!</strong> Post Créé avec succès !
                     </div>
                 </div>
                 {{ csrf_field() }}

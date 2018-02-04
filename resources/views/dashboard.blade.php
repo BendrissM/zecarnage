@@ -40,7 +40,7 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a class="btn btn-danger" data-toggle="modal" data-target="#modal-delete" data-id="{{$post->id}}">
+                                        <a href="/posts/{{$post->id}}/delete" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete">
                                             <i class="fa fa-trash"></i> Supprimer
                                         </a> 
                                         @include('modals.delete_modal')
@@ -57,7 +57,8 @@
     </div>
 </div>
 @include('templates.edit')
-@include('modals.create_modal') 
+@include('modals.create_modal')
+@include('templates.delete')
 @endsection
 
 @section('js')
