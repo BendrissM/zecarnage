@@ -80,6 +80,9 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+        if (Auth()->user()->id !== $post->user_id) {
+            return redirect('/posts')->with('error', 'Unauthorized page');
+        }
         return view('posts.edit')->with('post', $post);
     }
 
@@ -93,12 +96,15 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required',
-            'desc' => 'required',
+            'title' => 'required|max:100',
+            'desc' => 'required|min:10',
         ]);
 
         if($validator->passes()){
             $post = Post::find($id);
+            if (Auth()->user()->id !== $post->user_id) {
+                return redirect('/posts')->with('error', 'Unauthorized page');
+            }
             $post->title = $request->input('title');
             $post->body = $request->input('desc');
             if($post->save()){
@@ -118,12 +124,18 @@ class PostsController extends Controller
     public function deletePost($id)
     {
         $post = Post::find($id);
+        if (Auth()->user()->id !== $post->user_id) {
+            return redirect('/posts')->with('error', 'Unauthorized page');
+        }
         return view('posts.delete')->with('post', $post);
     }
 
     public function destroy($id)
     {
         $post = Post::find($id);
+        if (Auth()->user()->id !== $post->user_id) {
+            return redirect('/posts')->with('error', 'Unauthorized page');
+        }
         $post->delete();
         return redirect('dashboard');
     }
