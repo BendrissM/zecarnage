@@ -100,8 +100,14 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'title' => [
+            'required' => 'Le titre est obligatoire.',
+            'max' => 'Le texte du titre ne peut contenir plus de :max caractères.',
+            'unique' => 'Le titre est déjà utilisée.',
+        ],
+        'desc' => [
+            'required' => 'La description est obligatoire.',
+            'min' => 'Le texte description doit contenir au moins :min caractères.',
         ],
     ],
 

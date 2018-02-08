@@ -43,10 +43,11 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|unique:posts|max:255',
-            'desc' => 'required|min:20',
+            'title' => 'required|unique:posts|max:30',
+            'desc' => 'required|min:10',
         ]);
-
+        
+        //if there is no errors store data in database
         if($validator->passes()){
             $post = new Post;
             $post->title = $request->input('title');
@@ -95,13 +96,13 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $post = Post::find($id);
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:100',
+            'title' => 'required|max:30|unique:posts,title,'.$post->id,
             'desc' => 'required|min:10',
         ]);
 
         if($validator->passes()){
-            $post = Post::find($id);
             if (Auth()->user()->id !== $post->user_id) {
                 return redirect('/posts')->with('error', 'Unauthorized page');
             }
