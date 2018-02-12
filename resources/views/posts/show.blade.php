@@ -7,8 +7,9 @@
 
 @section('content')
 <br><br>
+<img style="width:30%" src="/storage/cover_images/{{$post->cover_image}}">
 <p>{!! $post->body !!}</p>
-<p><small class="pull-right">créé le : {{$post->created_at}} par {{$post->user->name}}</small></p>
+<small class="pull-right">créé le : {{$post->created_at}} par {{$post->user->name}}</small>
 <br>
 <hr style="border-top: 1px solid #bbb;">
 @if (!Auth::guest())

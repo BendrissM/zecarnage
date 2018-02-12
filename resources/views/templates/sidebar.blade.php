@@ -34,14 +34,14 @@
         <li class="active"><a href="/"><i class="fa fa-home"></i> <span>Page d'Acceuil</span></a></li>
         <li><a href="/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-file-text"></i> <span>Blogs</span>
+          <a href="#"><i class="fa fa-file-text"></i> <span>Articles</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/posts">Tout les blogs</a></li>
-            <li><a href="/posts/create">Créer un Blog</a></li>
+            <li><a href="/posts">Tout les articles</a></li>
+            <li><a href="/posts/create">Catégories</a></li>
           </ul>
         </li>
         <li><a href="/about"><i class="fa  fa-info-circle"></i> <span>À propos</span></a></li>

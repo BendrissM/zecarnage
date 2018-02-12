@@ -29,7 +29,11 @@
               </span>
           </div>
           <div class="form-group">
+              {{Form::label('cover_image', 'Choose an image (optional)')}}
               {{Form::file('cover_image')}}
+              <span class="text-red">
+                  <strong id="image-error"></strong>
+              </span>
           </div>
       </div>
       <div class="modal-footer">
