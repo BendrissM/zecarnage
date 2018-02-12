@@ -48,6 +48,7 @@
                                 </tr>
                             @endforeach
                         </table>
+                        {{$posts->links()}}
                     @else
                         <h3>Créé Ton blog maintenant !</h3>
                     @endif
