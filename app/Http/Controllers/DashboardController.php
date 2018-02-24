@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use App\User;
 use App\Adminsvip;
 
@@ -25,7 +26,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $posts = Adminsvip::orderBy('id', 'desc')->paginate(5);
+        $posts = Cache::remember('dplayers', 20, function(){
+            return Adminsvip::orderBy('id', 'desc')->paginate(5);
+        });
         return view('dashboard')->with('posts', $posts);
     }
 }
