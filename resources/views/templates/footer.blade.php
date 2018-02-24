@@ -5,5 +5,5 @@
       Version 1.0
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2018 <a href="http://fynotec.com/" target="_blank">FynoTech</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2018 <a href="#">Moncef Bendriss</a>.</strong> All rights reserved.
   </footer>

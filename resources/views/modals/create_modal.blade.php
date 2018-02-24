@@ -4,7 +4,7 @@
             <div class="modal-header" style="background-color: #00a65a;">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" style="color: white;">Créer un article</h4>
+              <h4 class="modal-title" style="color: white;">Create a player</h4>
             </div>
             {!! Form::open(['action' => 'PostsController@store', 'id' => 'createForm', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             <div class="modal-body">
@@ -13,29 +13,36 @@
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
                         </button>
-                        <strong>Succès!</strong> Post Créé avec succès !
+                        <strong>Success</strong> Post created successfuly !
                     </div>
                 </div>
                 {{ csrf_field() }}
                 <div class="form-group has-feedback">
-                    {{Form::label('title', 'Titre')}}
-                    {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Titre'])}}
+                    {{Form::label('lrn', 'Name')}}
+                    {{Form::text('lrn', '', ['class' => 'form-control', 'placeholder' => 'Name'])}}
                     <span class="text-red">
-                        <strong id="create-title-error"></strong>
+                        <strong id="create-Name-error"></strong>
                     </span>
                 </div>
                 <div class="form-group has-feedback">
-                    {{Form::label('desc', 'Text')}}
-                    {{Form::textarea('desc', '', ['id' => 'editor1', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
+                    {{Form::label('steamID', 'SteamID')}}
+                    {{Form::text('steamID', '', ['id' => 'editor1', 'class' => 'form-control', 'placeholder' => 'steamID'])}}
                     <span class="text-red">
-                        <strong id="create-desc-error"></strong>
+                        <strong id="create-steamID-error"></strong>
                     </span>
                 </div>
-                <div class="form-group">
-                    {{Form::label('cover_image', 'Choose an image (optional)')}}
-                    {{Form::file('cover_image')}}
+                <div class="form-group has-feedback">
+                    {{Form::label('flags', 'Flag')}}
+                    {{Form::text('flags', '', ['id' => 'editor1', 'class' => 'form-control', 'placeholder' => 'Flag'])}}
                     <span class="text-red">
-                        <strong id="create-image-error"></strong>
+                        <strong id="create-flags-error"></strong>
+                    </span>
+                </div>
+                <div class="form-group has-feedback">
+                    {{Form::label('dateEx', 'Expiration date')}}
+                    {{Form::text('dateEx', '', ['id' => 'editor1', 'class' => 'form-control', 'placeholder' => 'Expiration Date'])}}
+                    <span class="text-red">
+                        <strong id="create-dateEx-error"></strong>
                     </span>
                 </div>
             </div>

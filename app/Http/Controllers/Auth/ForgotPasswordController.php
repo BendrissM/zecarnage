@@ -29,4 +29,13 @@ class ForgotPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    public function showLinkRequest(){
+        return redirect('login');
+    }
+
+    public function sendResetLinkEm(){
+        return redirect('login');
+    }
+    
 }

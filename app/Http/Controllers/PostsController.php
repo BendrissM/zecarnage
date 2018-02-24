@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
-use App\Post;
+use Illuminate\Support\Facades\Cache;
+use App\Adminsvip;
 use Response;
 
 class PostsController extends Controller
@@ -21,7 +22,10 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(3);
+
+        $posts = Cache::remember('players', 20, function(){
+            return Adminsvip::orderBy('id', 'desc')->paginate(6);
+        });
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -44,36 +48,19 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|unique:posts|max:30',
-            'desc' => 'required|min:10',
-            'cover_image' => 'image|nullable|max:1999',
+            'steamID' => 'required',
+            'lrn' => 'required',
+            'flags' => 'required',
+            'dateEx' => 'required',
         ]);
-
-        //Handle File upload
-        if ($request->hasFile('cover_image')){
-            //Get file name with extension
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-            //but if another user uploads an image with the same name we get error
-
-            //Get File name
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            //Get File extension
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-            //File name to store
-            $FileNameToStore = $filename.'_'.time().'.'.$extension ;
-            //upload image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $FileNameToStore);
-        }else{
-            $FileNameToStore = 'noimage.jpg';
-        }
         
         //if there is no errors store data in database
         if($validator->passes()){
-            $post = new Post;
-            $post->title = $request->input('title');
-            $post->body = $request->input('desc');
-            $post->user_id = auth()->user()->id;
-            $post->cover_image = $FileNameToStore;
+            $post = new Adminsvip;
+            $post->steamID = $request->input('steamID');
+            $post->lastRecordedName = $request->input('lrn');
+            $post->flags = $request->input('flags');
+            $post->DateExpiration = $request->input('dateEx');
             if($post->save()){
                 return Response::json(['success' => '1']);
             }
@@ -89,7 +76,7 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
+        $post = Adminsvip::find($id);
         return view('posts.show')->with('post', $post);
     }
 
@@ -101,10 +88,7 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id);
-        if (Auth()->user()->id !== $post->user_id) {
-            return redirect('/posts')->with('error', 'Unauthorized page');
-        }
+        $post = Adminsvip::find($id);
         return view('posts.edit')->with('post', $post);
     }
 
@@ -117,40 +101,19 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = Post::find($id);
+        $post = Adminsvip::find($id);
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:30|unique:posts,title,'.$post->id,
-            'desc' => 'required|min:10',
-            'cover_image' => 'image|nullable|max:1999',
+            'steamID' => 'required|unique:adminsvip,steamID,'.$post->id,
+            'lrn' => 'required',
+            'flags' => 'required',
+            'dateEx' => 'required',
         ]);
 
-        //Handle File upload
-        if ($request->hasFile('cover_image')){
-            //Get file name with extension
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-            //but if another user uploads an image with the same name we get error
-
-            //Get File name
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            //Get File extension
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-            //File name to store
-            $FileNameToStore = $filename.'_'.time().'.'.$extension ;
-            //upload image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $FileNameToStore);
-        }else{
-            $FileNameToStore = 'noimage.jpg';
-        }
-
         if($validator->passes()){
-            if (Auth()->user()->id !== $post->user_id) {
-                return redirect('/posts')->with('error', 'Unauthorized page');
-            }
-            $post->title = $request->input('title');
-            $post->body = $request->input('desc');
-            if ($request->hasFile('cover_image')){
-                $post->cover_image = $FileNameToStore;
-            }
+            $post->steamID = $request->input('steamID');
+            $post->lastRecordedName = $request->input('lrn');
+            $post->flags = $request->input('flags');
+            $post->DateExpiration = $request->input('dateEx');
             if($post->save()){
                 return Response::json(['success' => '1']);
             }
@@ -167,22 +130,13 @@ class PostsController extends Controller
 
     public function deletePost($id)
     {
-        $post = Post::find($id);
-        if (Auth()->user()->id !== $post->user_id) {
-            return redirect('/posts')->with('error', 'Unauthorized page');
-        }
+        $post = Adminsvip::find($id);
         return view('posts.delete')->with('post', $post);
     }
 
     public function destroy($id)
     {
-        $post = Post::find($id);
-        if (Auth()->user()->id !== $post->user_id) {
-            return redirect('/posts')->with('error', 'Unauthorized page');
-        }
-        if ($post->cover_image !== 'noimage.jpg'){
-            Storage::delete('public/cover_images/'.$post->cover_image);
-        }
+        $post = Adminsvip::find($id);
         $post->delete();
         return redirect('dashboard');
     }

@@ -1,33 +1,25 @@
 @extends('layouts.master')
 
 @section('content_header')
-    {{$post->title}}
-    <small>Voir les details de chaque article</small>
+    {{$post->lastRecordedName}}
+    <small>see player details</small>
 @endsection
 
 @section('content')
 <br><br>
-<img style="width:30%" src="/storage/cover_images/{{$post->cover_image}}">
-<p>{!! $post->body !!}</p>
-<small class="pull-right">créé le : {{$post->created_at}} par {{$post->user->name}}</small>
+<h3>Player SteamID :</h3>         <i>{{ $post->steamID }}</i>
+<h3>Player flag     : </h3>       <i>{{ $post->flags }}</i>
+<h3>Player Expiration date:</h3>  <i>{{ $post->DateExpiration }}</i>
+
 <br>
 <hr style="border-top: 1px solid #bbb;">
 @if (!Auth::guest())
-    @if (Auth::user()->id == $post->user->id)
         <a class="btn btn-danger pull-right" data-toggle="modal" data-target="#modal-delete">
-            <i class="fa fa-trash"></i> Supprimer
+            <i class="fa fa-trash"></i> Delete
         </a>
         <a class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-            <i class="fa fa-edit"></i> Modifier
+            <i class="fa fa-edit"></i> Edit
         </a>
-    @else
-        <a class="btn btn-danger pull-right" data-toggle="modal" data-target="#modal-warning">
-            <i class="fa fa-trash"></i> Supprimer
-        </a>
-        <a class="btn btn-primary" data-toggle="modal" data-target="#modal-warning">
-            <i class="fa fa-edit"></i> Modifier
-        </a>
-    @endif
 @else
     <button title="not allowed" class="btn btn-danger disabled pull-right">Supprimer</button>
     <button title="not allowed" class="btn btn-primary disabled">Modifier</button>
@@ -36,7 +28,6 @@
 <!-- Modals -->
 @include('modals.edit_modal')
 @include('modals.delete_modal')
-@include('modals.warning_modal')
 @endsection
 
 @section('js')
