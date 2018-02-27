@@ -15,7 +15,9 @@
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-
+      <!-- Search Box -->
+      @yield('search')
+      <!-- /.Search Box -->
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
         <!-- Optionally, you can add icons to the links -->

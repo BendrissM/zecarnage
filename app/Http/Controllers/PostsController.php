@@ -22,8 +22,10 @@ class PostsController extends Controller
      */
     public function index()
     {
-
-        $posts =  Adminsvip::orderBy('id', 'desc')->paginate(6);
+        $search = \Request::get('search');
+        $posts = Adminsvip::where('lastRecordedName','like','%'.$search.'%')
+                    ->orderBy('id', 'desc')
+                    ->paginate(5);
         return view('posts.index')->with('posts', $posts);
     }
 

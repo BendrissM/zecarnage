@@ -67,3 +67,9 @@
     <script src="{{ asset('js/modal_hide.js') }}"></script>
     <script src="{{ asset('js/edit.js') }}"></script>
 @endsection
+
+@extends('templates.sidebar')
+
+@section('search')
+    @include('inc.search', ['url' => 'DashboardController@index'])
+@endsection

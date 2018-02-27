@@ -26,7 +26,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $posts = Adminsvip::orderBy('id', 'desc')->paginate(5);
+        $search = \Request::get('search');
+        $posts = Adminsvip::where('lastRecordedName','like','%'.$search.'%')
+                    ->orderBy('id', 'desc')
+                    ->paginate(5);
         return view('dashboard')->with('posts', $posts);
     }
 }

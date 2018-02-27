@@ -26,3 +26,9 @@
         
     
 @endsection
+
+@extends('templates.sidebar')
+
+@section('search')
+    @include('inc.search', ['url' => 'PostsController@index'])
+@endsection
