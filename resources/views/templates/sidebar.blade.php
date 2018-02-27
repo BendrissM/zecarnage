@@ -21,7 +21,7 @@
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="/"><i class="fa fa-home"></i> <span>Page d'Acceuil</span></a></li>
+        <li><a href="/"><i class="fa fa-home"></i> <span>Page d'Acceuil</span></a></li>
         <li><a href="/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href="/posts"><i class="fa fa-file-text"></i> <span>All Players</span></a></li>
       </ul>

@@ -3,8 +3,8 @@
 @section('content')
 <br>
   <div class="jumbotron text-center">
-    <h1>Bienvenue {{Auth::user()->name}}</h1>
-    <p>Crée Ton Blog Maintenant !</p>
+    <h1>Welcome {{Auth::user()->name}}</h1>
+    <p>Create Players Now ! </p>
     <p><a href="/dashboard" class="btn btn-success btn-flat">Dashboard</a> <a href="{{ route('logout') }}"
       class="btn btn-danger btn-flat" onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">
