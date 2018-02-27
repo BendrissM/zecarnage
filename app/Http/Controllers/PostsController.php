@@ -23,9 +23,7 @@ class PostsController extends Controller
     public function index()
     {
 
-        $posts = Cache::remember('players', 20, function(){
-            return Adminsvip::orderBy('id', 'desc')->paginate(6);
-        });
+        $posts =  Adminsvip::orderBy('id', 'desc')->paginate(6);
         return view('posts.index')->with('posts', $posts);
     }
 

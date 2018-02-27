@@ -26,9 +26,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $posts = Cache::remember('dplayers', 20, function(){
-            return Adminsvip::orderBy('id', 'desc')->paginate(5);
-        });
+        $posts = Adminsvip::orderBy('id', 'desc')->paginate(5);
         return view('dashboard')->with('posts', $posts);
     }
 }
